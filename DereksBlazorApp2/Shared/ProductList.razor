@@ -1,0 +1,20 @@
+﻿@using DereksBlazorApp2.Models
+@using DereksBlazorApp2.Services;
+
+<h3>Product List</h3>
+
+@foreach(Product product in Products)
+{
+    <h2>@product.Name</h2>
+    <p>@product.ImageURL</p>
+    <p>Product Type: @product.Type</p>
+}
+
+@code 
+{
+    [Parameter, EditorRequired]
+    public List<Product> Products { get; set; } = ProductService.Products.ToList();
+
+    [Parameter]
+    public bool DisplayBuyButton { get; set; } = false;
+}
